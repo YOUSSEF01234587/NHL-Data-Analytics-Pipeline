@@ -21,6 +21,7 @@ An end-to-end **Data Analytics & Machine Learning Pipeline** for analyzing NHL t
 
 ## 🧱 Project Structure
 
+```text
 NHL-DATA-ANALYTICS-PIPELINE/
 ├── data/
 │   ├── final/              # Final visualizations for README
@@ -41,7 +42,7 @@ NHL-DATA-ANALYTICS-PIPELINE/
 ├── venv/                   # Virtual environment
 ├── README.md
 └── requirements.txt
-
+```
 ---
 
 ## ⚙️ Technologies Used
