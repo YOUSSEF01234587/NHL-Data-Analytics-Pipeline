@@ -21,27 +21,26 @@ The pipeline includes:
 
 ## 🧱 Project Structure
 
-```
 NHL-DATA-ANALYTICS-PIPELINE/
 ├── data/
-│   ├── final/
-│   ├── processed/
-│   └── raw/
-├── docs/
-├── models/
-├── notebooks/
+│   ├── final/          # Final visualizations for README
+│   ├── processed/      # Cleaned data for modeling
+│   └── raw/            # Raw scraped data
+├── docs/               # Project notes and documentation
+├── models/             # Saved ML models (.pkl)
+├── notebooks/          # Jupyter notebooks for EDA
 ├── reports/
-│   ├── figures/
-│   └── powerbi/
-├── src/
+│   ├── figures/        # Model evaluation plots
+│   ├── powerbi/        # Power BI dashboard files
+│   └── NHL Team Performance.pdf  # Formal Business Report
+├── src/                # Source code
 │   ├── analysis/
 │   ├── modeling/
 │   ├── preprocessing/
 │   └── scraping/
-├── venv/
+├── venv/               # Virtual environment
 ├── README.md
 └── requirements.txt
-```
 
 ---
 
@@ -195,23 +194,39 @@ model = joblib.load("models/GradientBoosting_nhl_model.pkl")
 
 ## 🚀 How to Run the Project
 
-### Install dependencies
+### 1. Clone the repository
 
+```bash
+git clone https://github.com/YOUSSEF01234587/NHL-DATA-ANALYTICS-PIPELINE.git
+cd NHL-DATA-ANALYTICS-PIPELINE
 ```
+
+### 2. Set up Virtual Environment
+
+**Windows:**
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**Mac/Linux:**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-### Train model
+### 4. Run the Pipeline
 
-```
-python src/modeling/train_model.py
-```
-
-### Evaluate model
-
-```
-python src/modeling/evaluate_model.py
-```
+* **Train model:** `python src/modeling/train_model.py`
+* **Evaluate model:** `python src/modeling/evaluate_model.py`
 
 ---
 
@@ -237,6 +252,12 @@ docs/project_notes.md
 
 ---
 
+## 📄 Formal Business Report
+
+You can view the full professional analysis report here: [NHL_Business_Report.pdf](./reports/NHL_Business_Report.pdf)
+
+---
+
 ## 🔮 Future Improvements
 
 * Hyperparameter tuning
@@ -247,7 +268,10 @@ docs/project_notes.md
 
 ---
 
+
+
 ## 👨‍💻 Author
 
-**Youssef Mohamed Elsayed**
-Data Analyst | Machine Learning Enthusiast
+**Youssef Mohamed Elsayed** *AI Student at Delta University for Science and Technology | Data Science & Machine Learning Enthusiast*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/youssef-talaat-278ba5230/) [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUSSEF01234587) [![Codeforces](https://img.shields.io/badge/Codeforces-445f9d?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/YOUSSEF01234587)
