@@ -157,15 +157,15 @@ Metrics Used:
 
 ### Prediction vs Actual
 
-![Prediction vs Actual](reports\figures\GradientBoosting_pred_vs_actual.png)
+![]()![Prediction vs Actual](reports/figures/GradientBoosting_pred_vs_actual.png)
 
 ### Feature Importance
 
-![Feature Importance](reports\figures\GradientBoosting_feature_importance.png)
+![Feature Importance](reports/figures/GradientBoosting_feature_importance.png)
 
 ### Feature Importance (Evaluation)
 
-![Feature Importance Eval](reports\figures\GradientBoosting_feature_importance_eval.png)
+![Feature Importance Eval](reports/figures/GradientBoosting_feature_importance_eval.png)
 
 ---
 
