@@ -101,23 +101,23 @@ notebooks/01_EDA.ipynb
 
 ### Correlation Heatmap
 
-![Correlation Heatmap](data\final\correlation_heatmap.png)
+![]()![Correlation Heatmap](data/final/correlation_heatmap.png)
 
 ### Wins Distribution
 
-![Wins Distribution](data\final\wins_distribution.png)
+![]()![Wins Distribution](data/final/wins_distribution.png)
 
 ### Win Percentage Distribution
 
-![Win Percentage Distribution](data\final\win_percentage_distribution.png)
+![Win Percentage Distribution](data/final/win_percentage_distribution.png)
 
 ### Wins vs Goal Difference
 
-![Wins vs Goal Difference](data\final\wins_vs_goal_difference.png)
+![Wins vs Goal Difference](data/final/wins_vs_goal_difference.png)
 
 ### Yearly Performance Trends
 
-![Yearly Trends](data\final\yearly_trends.png)
+![Yearly Trends](data/final/yearly_trends.png)
 
 ---
 
