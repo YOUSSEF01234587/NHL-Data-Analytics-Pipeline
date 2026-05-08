@@ -157,11 +157,12 @@ pip install -r requirements.txt
 ```
 
 ---
-4️⃣ Launch Interactive Dashboard
+### 4️⃣ Launch Interactive Dashboard
 Run the following command to open the predictor in your browser:
 
-Bash
+```bash
 streamlit run src/analysis/app.py
+```
 
 
 ## 🔗 Connect With Me
