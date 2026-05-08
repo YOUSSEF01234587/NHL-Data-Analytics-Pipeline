@@ -1,13 +1,13 @@
-# src/modeling/evaluate_model.py
 import pandas as pd
 import numpy as np
 import os
 import joblib
 import matplotlib.pyplot as plt
-from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+import seaborn as sns
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # -----------------------------
-# 1️ Load Data
+# 1️ Load Data & Prepare Target
 # -----------------------------
 data_path = os.path.join(os.path.dirname(__file__), '../../data/processed/nhl_data_clean.csv')
 if not os.path.exists(data_path):
@@ -15,8 +15,10 @@ if not os.path.exists(data_path):
 
 df = pd.read_csv(data_path)
 
+df['Match_Result'] = (df['Goal Difference'] > 0).astype(int)
+
 features = ["Goals For (GF)", "Goals Against (GA)", "Goal Difference", "OT Losses"]
-target = "Wins"
+target = "Match_Result"
 
 X = df[features]
 y = df[target]
@@ -25,7 +27,7 @@ y = df[target]
 # 2️ Load Saved Model
 # -----------------------------
 models_dir = os.path.join(os.path.dirname(__file__), '../../models/')
-model_name = "GradientBoosting_nhl_model.pkl"  # Change if you want a different model
+model_name = "GradientBoosting_nhl_model.pkl" 
 model_path = os.path.join(models_dir, model_name)
 
 if not os.path.exists(model_path):
@@ -35,46 +37,47 @@ model = joblib.load(model_path)
 print(f"Loaded model: {model_name}")
 
 # -----------------------------
-# 3️ Predict & Evaluate
+# 3️ Predict & Evaluate (Classification Metrics)
 # -----------------------------
 y_pred = model.predict(X)
 
-r2 = r2_score(y, y_pred)
-mae = mean_absolute_error(y, y_pred)
-rmse = np.sqrt(mean_squared_error(y, y_pred))
+accuracy = accuracy_score(y, y_pred)
+report = classification_report(y, y)
 
 print(f"\nEvaluation Metrics for {model_name}:")
-print(f"R2 Score: {r2:.4f}")
-print(f"MAE: {mae:.2f}")
-print(f"RMSE: {rmse:.2f}")
+print(f"Overall Accuracy: {accuracy:.4f}")
+print("-" * 30)
+print("Classification Report:")
+print(report)
 
 # -----------------------------
-# 4️ Feature Importance Visualization (if Tree-Based)
+# 4️ Confusion Matrix Visualization
+# -----------------------------
+cm = confusion_matrix(y, y_pred)
+plt.figure(figsize=(6,4))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Loss', 'Win'], yticklabels=['Loss', 'Win'])
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title(f'Confusion Matrix: {model_name.split("_")[0]}')
+
+figures_dir = os.path.join(os.path.dirname(__file__), '../../reports/figures/')
+os.makedirs(figures_dir, exist_ok=True)
+cm_path = os.path.join(figures_dir, 'confusion_matrix.png')
+plt.savefig(cm_path)
+plt.close()
+print(f"Confusion Matrix saved at: {cm_path}")
+
+# -----------------------------
+# 5️ Feature Importance
 # -----------------------------
 if hasattr(model, "feature_importances_"):
     importances = model.feature_importances_
     plt.figure(figsize=(8,5))
     plt.barh(features, importances, color="skyblue")
-    plt.xlabel("Importance")
-    plt.title(f"{model_name.split('_')[0]} Feature Importance")
+    plt.xlabel("Importance Score")
+    plt.title(f"Feature Importance ({model_name.split('_')[0]})")
     
-    figures_dir = os.path.join(os.path.dirname(__file__), '../../reports/figures/')
-    os.makedirs(figures_dir, exist_ok=True)
-    fig_path = os.path.join(figures_dir, f"{model_name.split('_')[0]}_feature_importance_eval.png")
+    fig_path = os.path.join(figures_dir, f"feature_importance_eval.png")
     plt.savefig(fig_path, bbox_inches='tight')
     plt.close()
-    print(f"Feature importance saved at: {fig_path}")
-
-# -----------------------------
-# 5️ Optional: Predictions vs Actual Plot
-# -----------------------------
-plt.figure(figsize=(8,5))
-plt.scatter(y, y_pred, alpha=0.7)
-plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')  # perfect prediction line
-plt.xlabel("Actual Wins")
-plt.ylabel("Predicted Wins")
-plt.title(f"{model_name.split('_')[0]} Predictions vs Actual")
-plot_path = os.path.join(figures_dir, f"{model_name.split('_')[0]}_pred_vs_actual.png")
-plt.savefig(plot_path, bbox_inches='tight')
-plt.close()
-print(f"Predictions vs Actual plot saved at: {plot_path}")
+    print(f"Feature importance plot saved at: {fig_path}")
