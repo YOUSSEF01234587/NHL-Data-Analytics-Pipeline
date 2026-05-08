@@ -131,16 +131,6 @@ Based on the latest evaluation of **582 matches**:
 
 ---
 
-## 📊 Performance Visualization
-
-### 1. Confusion Matrix
-Visualizing the zero-error classification between **Winners** and **Losers**.
-
-### 2. Feature Importance
-Key factors influencing the model's decisions, with **Goal Difference** being the primary predictor.
-
----
-
 ## 🚀 How to Run the Project
 
 ### 1️⃣ Clone the repository
