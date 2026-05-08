@@ -116,9 +116,11 @@ data/processed/nhl_data_clean.csv
 
 
 ![Actual vs Predicted](reports/figures/GradientBoosting_pred_vs_actual.png)
+
 *Comparison between Predicted and Actual wins.*
 
 ![Feature Importance](reports/figures/GradientBoosting_feature_importance.png)
+
 *Key factors influencing the model's decisions.*
 
 ---
