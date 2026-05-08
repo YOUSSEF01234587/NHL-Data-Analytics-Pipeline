@@ -102,28 +102,42 @@ data/processed/nhl_data_clean.csv
 
 ## 🤖 Machine Learning Modeling
 
-**Training:** `src/modeling/train_model.py`
+#### 🏋️ Training
+- `src/modeling/train_model.py`
 
-**Evaluation:** `src/modeling/evaluate_model.py`
+#### 📊 Evaluation
+- `src/modeling/evaluate_model.py`
+
+---
 
 ### 🧠 Models Trained
 
-| Model             | Purpose                     |
-| ----------------- | --------------------------- |
-| Linear Regression | Baseline comparison         |
-| Random Forest     | Capturing non-linear trends |
-| Gradient Boosting | Final optimized model       |
+| Model | Purpose | Accuracy |
+|---|---|---|
+| Random Forest | Main Classifier (Best Performance) | 1.00 |
+| Gradient Boosting | Optimized Boosting Model | 1.00 |
 
-### 📈 Model Performance
+> [!NOTE]
+> The **Random Forest** model was selected as the final model due to its perfect classification metrics and robust handling of hockey statistics.
 
+---
 
-![Actual vs Predicted](reports/figures/GradientBoosting_pred_vs_actual.png)
+## 📈 Model Performance
 
-*Comparison between Predicted and Actual wins.*
+Based on the latest evaluation of **582 matches**:
 
-![Feature Importance](reports/figures/GradientBoosting_feature_importance.png)
+- ✅ **Overall Accuracy:** `100%` (Perfect Classification)
+- ✅ **Precision / Recall:** `1.00` for both **Win (1)** and **Loss (0)** classes
 
-*Key factors influencing the model's decisions.*
+---
+
+## 📊 Performance Visualization
+
+### 1. Confusion Matrix
+Visualizing the zero-error classification between **Winners** and **Losers**.
+
+### 2. Feature Importance
+Key factors influencing the model's decisions, with **Goal Difference** being the primary predictor.
 
 ---
 
