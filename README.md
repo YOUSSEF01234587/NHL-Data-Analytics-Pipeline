@@ -36,6 +36,8 @@ NHL-DATA-ANALYTICS-PIPELINE/
 │   └── NHL Team Performance.pdf
 ├── src/
 │   ├── analysis/
+│   │   ├── analysis.py
+│   │   └── app.py          # Interactive Streamlit Dashboard 🚀
 │   ├── modeling/
 │   ├── preprocessing/
 │   └── scraping/
